@@ -1,0 +1,24 @@
+[Unit]
+Description=locust worker
+
+# If more than 30 starts within 30 minutes, service is stopped
+StartLimitIntervalSec=1800
+StartLimitBurst=30
+
+# Restart immediatly
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=infisical run --watch -- pipx run locust -f - --worker
+Restart=always
+RestartSec=5s
+WorkingDirectory=/home/ubuntu
+StandardOutput=journal
+StandardError=journal
+User=ubuntu
+Group=ubuntu
+Environment="HOME=/home/ubuntu"
+
+[Install]
+WantedBy=multi-user.target
