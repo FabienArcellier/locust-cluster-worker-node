@@ -61,7 +61,7 @@ The system consists of:
 Run the installation script on each worker node:
 
 ```bash
-https://github.com/FabienArcellier/locust-cluster-worker-node.git
+git clone https://github.com/FabienArcellier/locust-cluster-worker-node.git
 cd locust-cluster-worker-node
 bash install.sh
 ```
@@ -101,6 +101,11 @@ This script will:
    - Access your Infisical project
    - Set your private network IP as the master node IP
    - Workers will automatically detect this change and connect
+
+```
+LOCUST_MASTER_NODE_HOST=100.75.123.51
+LOCUST_PROCESSES=2 # { CPU * 2 }
+```
 
 3. **Start Locust Master**:
    ```bash
